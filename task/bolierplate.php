@@ -31,7 +31,7 @@ class Animal
     # parameter: index dan hewan baru
     public function update($index, $animals)
     {
-        array_splice($this->animals, $index);
+        $this->animals[$index] = $animals;
     }
 
     # method delete - menghapus hewan
