@@ -21,20 +21,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 # method get - get all resource pasien
-Route::get('/patients', [patientsController::class, 'index']);
+Route::get('/patients', [PatientsController::class, 'index']);
 # method post - menambah data pasien
-Route::post('/patients', [patientsController::class, 'store']);
+Route::post('/patients', [PatientsController::class, 'store']);
 # method get - menampilkan data pasien
-Route::get('/patients/{id}', [patientsController::class, 'show']);
+Route::get('/patients/{id}', [PatientsController::class, 'show']);
 # method put - edit resource pasien
-Route::get('/patients/{id}', [patientsController::class, 'update']);
+Route::get('/patients/{id}', [PatientsController::class, 'update']);
 # method delete - menghapus data pasien
-Route::delete('/patients/{id}', [patientsController::class, 'destroy']);
+Route::delete('/patients/{id}', [PatientsController::class, 'destroy']);
 # method get - mencari data pasien berdasarkan nama
-Route::get('/patients/search/{name}', [patientsController::class, 'search']);
+Route::get('/patients/search/{name}', [PatientsController::class, 'search']);
 # method get - data pasien positif
-Route::get('/patients/status/positive', [patientsController::class, 'positive']);
+Route::get('/patients/status/positive', [PatientsController::class, 'positive']);
 # method get - data pasien pulih
-Route::get('/patients/status/recovered', [patientsController::class, 'recovered']);
+Route::get('/patients/status/recovered', [PatientsController::class, 'recovered']);
 # method get - data pasien meninggal
-Route::get('/patients/status/dead', [PatientController::class, 'dead']);
+Route::get('/patients/status/dead', [PatientsController::class, 'dead']);

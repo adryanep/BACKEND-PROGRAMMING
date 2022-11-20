@@ -10,6 +10,7 @@ class PatientsController extends Controller
     # method index - get all resource pasien
     public function index()
     {
+        # mengambil seluruh data pasien
         $patients = Patients::all();
 
         if ($patients) {
@@ -84,6 +85,7 @@ class PatientsController extends Controller
     # method put - edit resource pasien
     public function update(Request $request, $id)
     {
+        # menemumkan data pasien
         $patientsinput = Patients::find($id);
         if ($patientsinput) {
             $patientsinput->update([
@@ -113,6 +115,7 @@ class PatientsController extends Controller
     # method delete - menghapus data pasien
     public function destroy($id)
     {
+        # menghapus data pasien
         $patientsdelete = Patients::destroy($id);
         if ($patientsdelete) {
             $data = [
@@ -132,6 +135,7 @@ class PatientsController extends Controller
     # method get - mencari data pasien berdasarkan nama
     public function search($name)
     {
+        # mencari data pasien berdasarkan nama
         $patientsname = Patients::where('name', 'like', $name)->get();
         if ($patientsname) {
             $data = [
@@ -152,7 +156,8 @@ class PatientsController extends Controller
     # method get - data pasien positif
     public function positive()
     {
-        $patientspositive = Patients::where('status', 'patients positive')->get();
+        # mencari data pasien positive
+        $patientspositive = Patients::where('status', 'positive')->get();
 
         $data = [
             'message' => 'Get positive resource',
@@ -166,7 +171,8 @@ class PatientsController extends Controller
     # method get - data pasien pulih
     public function recovered()
     {
-        $patientsrecovered = Patients::where('status', 'patients recovered')->get();
+        # mencari data pasien pulih
+        $patientsrecovered = Patients::where('status', 'recovered')->get();
 
         $data = [
             'message' => 'Get recovered resource',
@@ -180,7 +186,8 @@ class PatientsController extends Controller
     # method get - data pasien meninggal
     public function dead()
     {
-        $patientsdead = Patients::where('status', 'patients dead')->get();
+        # mencari data pasien meninggal
+        $patientsdead = Patients::where('status', 'dead')->get();
 
         $data = [
             'message' => 'Get dead resource',
