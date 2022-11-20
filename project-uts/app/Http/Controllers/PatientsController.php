@@ -63,12 +63,12 @@ class PatientsController extends Controller
     public function show($id)
     {
         #cari data pasien
-        $patientshow = Patients::find($id);
+        $patientsshow = Patients::find($id);
 
-        if ($patientshow) {
+        if ($patientsshow) {
             $data = [
                 'message' => 'Get Detail Resource',
-                'data' => $patientshow,
+                'data' => $patientsshow,
             ];
             # mengembalikan data (json) status code 200
             return response()->json($data, 200);
@@ -84,20 +84,20 @@ class PatientsController extends Controller
     # method put - edit resource pasien
     public function update(Request $request, $id)
     {
-        $patientinput = Patients::find($id);
-        if ($patientinput) {
-            $patientinput->update([
-                'name' => $request->name ?? $patientinput->name,
-                'phone' => $request->phone ?? $patientinput->phone,
-                'address' => $request->address ?? $patientinput->address,
-                'status' => $request->status ?? $patientinput->status,
-                'in_date_at' => $request->in_date_at ?? $patientinput->in_date_at,
-                'out_date_at' => $request->out_date_at ?? $patientinput->out_date_at,
+        $patientsinput = Patients::find($id);
+        if ($patientsinput) {
+            $patientsinput->update([
+                'name' => $request->name ?? $patientsinput->name,
+                'phone' => $request->phone ?? $patientsinput->phone,
+                'address' => $request->address ?? $patientsinput->address,
+                'status' => $request->status ?? $patientsinput->status,
+                'in_date_at' => $request->in_date_at ?? $patientsinput->in_date_at,
+                'out_date_at' => $request->out_date_at ?? $patientsinput->out_date_at,
             ]);
 
             $data = [
                 'message' => 'Resource is update successfully',
-                'data' => $patientinput
+                'data' => $patientsinput
             ];
             # mengembalikan data (json) status code 200
             return response()->json($data, 200);
@@ -166,12 +166,12 @@ class PatientsController extends Controller
     # method get - data pasien pulih
     public function recovered()
     {
-        $patientrecovered = Patients::where('status', 'patients recovered')->get();
+        $patientsrecovered = Patients::where('status', 'patients recovered')->get();
 
         $data = [
             'message' => 'Get recovered resource',
-            'total' => $patientrecovered->count(),
-            'data' => $patientrecovered,
+            'total' => $patientsrecovered->count(),
+            'data' => $patientsrecovered,
         ];
         # mengembalikan data (json) status code 200
         return response()->json($data, 200);
