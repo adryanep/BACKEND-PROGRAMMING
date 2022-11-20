@@ -184,7 +184,6 @@ class PatientsController extends Controller
     }
 
     # method get - data pasien meninggal
-
     public function dead()
     {
         # mencari data pasien meninggal
