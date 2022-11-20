@@ -152,7 +152,7 @@ class PatientsController extends Controller
     # method get - data pasien positif
     public function positive()
     {
-        $patientspositive = Patients::where('status', 'patients positive')->get;
+        $patientspositive = Patients::where('status', 'patients positive')->get();
 
         $data = [
             'message' => 'Get positive resource',
@@ -166,7 +166,7 @@ class PatientsController extends Controller
     # method get - data pasien pulih
     public function recovered()
     {
-        $patientrecovered = Patients::where('status', 'patients recovered')->get;
+        $patientrecovered = Patients::where('status', 'patients recovered')->get();
 
         $data = [
             'message' => 'Get recovered resource',
@@ -180,7 +180,7 @@ class PatientsController extends Controller
     # method get - data pasien meninggal
     public function dead()
     {
-        $patientsdead = Patients::where('status', 'patients dead')->get;
+        $patientsdead = Patients::where('status', 'patients dead')->get();
 
         $data = [
             'message' => 'Get dead resource',
