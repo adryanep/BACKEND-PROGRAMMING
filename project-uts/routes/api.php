@@ -2,8 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PatientController;
-use App\Models\Patient;
+use App\Http\Controllers\PatientsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,21 +19,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 # method get - get all resource pasien
-Route::get('/patient', [PatientController::class, 'index']);
+Route::get('/patients', [patientsController::class, 'index']);
 # method post - menambah data pasien
-Route::post('/patient', [PatientController::class, 'store']);
+Route::post('/patients', [patientsController::class, 'store']);
 # method get - menampilkan data pasien
-Route::get('/patient/{id}', [PatientController::class, 'show']);
+Route::get('/patients/{id}', [patientsController::class, 'show']);
 # method put - edit resource pasien
-Route::get('/patient/{id}', [PatientController::class, 'update']);
+Route::get('/patients/{id}', [patientsController::class, 'update']);
 # method delete - menghapus data pasien
-Route::get('/patient/{id}', [PatientController::class, 'destroy']);
+Route::delete('/patients/{id}', [patientsController::class, 'destroy']);
 # method get - mencari data pasien berdasarkan nama
-Route::get('/patient/search/{name}', [PatientController::class, 'search']);
+Route::get('/patients/search/{name}', [patientsController::class, 'search']);
 # method get - data pasien positif
-Route::get('/patient/status/positive', [PatientController::class, 'positive']);
+Route::get('/patients/status/positive', [patientsController::class, 'positive']);
 # method get - data pasien pulih
-Route::get('/patient/status/recovered', [PatientController::class, 'recovered']);
+Route::get('/patients/status/recovered', [patientsController::class, 'recovered']);
 # method get - data pasien meninggal
-Route::get('/patient/status/dead', [PatientController::class, 'dead']);
+Route::get('/patients/status/dead', [PatientController::class, 'dead']);
