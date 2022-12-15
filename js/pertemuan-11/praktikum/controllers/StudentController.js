@@ -31,7 +31,7 @@ class StudentController {
       const { nama } = req.body;
   
       // TODO 6: Update data students
-      students.splice(id, nama)
+      students[id] = nama
       const data = {
         message: `Mengedit student id ${id}, nama ${nama}`,
         data: [students],
@@ -44,7 +44,7 @@ class StudentController {
       const { id } = req.params;
   
       // TODO 7: Hapus data students
-      students.shift(id);
+      students.splice(id,1);
       const data = {
         message: `Menghapus student id ${id}`,
         data: [students],
