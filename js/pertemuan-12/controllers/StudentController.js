@@ -21,37 +21,79 @@ class StudentController {
      * Method create mengembalikan data yang baru diinsert.
      * Mengembalikan response dalam bentuk json.
      */
-    const students = await Student.create();
+    await Student.create(req.body, (student) => {
+      const data = {
+        message: "Menambahkan data student",
+        data: student,
+      };
 
-    const data = {
-      message: "Menambahkan data student",
-      data: [],
-    };
-
-    res.json(data);
+      res.json(data);
+    });
   }
 
-  update(req, res) {
+  async update(req, res) {
     const { id } = req.params;
-    const { nama } = req.body;
+    // cari id student yang ingin di update
+    const student = await Student.find(id);
 
-    const data = {
-      message: `Mengedit student id ${id}, nama ${nama}`,
-      data: [],
-    };
+    if (student) {
+      //melakukan update data
+      const student = await Student.update(id, req.body);
+      const data = {
+        message: `mengedit data students`,
+        data: student,
+      };
+      res.status(200).json(data);
+    }
+    else {
+      const data = {
+        message: `student not found`,
+      };
 
-    res.json(data);
+      res.status(404).json(data);
+    }
   }
 
-  destroy(req, res) {
+  async destroy(req, res) {
     const { id } = req.params;
+    const student = await Student.find(id);
 
-    const data = {
-      message: `Menghapus student id ${id}`,
-      data: [],
-    };
+    if (student) {
+      await Student.delete(id);
+      const data = {
+        message: `Menghapus data students`,
+      };
 
-    res.json(data);
+      res.status(200).json(data);
+    } else {
+      const data = {
+        message: `Student Not Found`,
+      };
+
+      res.status(404).json(data);
+    }
+  }
+
+  async show(req, res) {
+    const { id } = req.params;
+    // cari student berdasarkan id
+    const student = await Student.find(id);
+
+    if (student) {
+      const data = {
+        message: `Menampilkan detail students`,
+        data:student,
+      };
+
+      res.status(200).json(data);
+    }
+    else {
+      const data = {
+        message: `Student Not Found`,
+      };
+
+      res.status(404).json(data);
+    }
   }
 }
 
